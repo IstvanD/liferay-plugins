@@ -46,12 +46,32 @@ if (entry.getPriority() > 0) {
 %>
 
 <div class="clearfix entry<%= className %>" data-entryId="<%= entry.getEntryId() %>" id="<portlet:namespace /><%= entry.getEntryId() %>">
+	<%
+	User entryUser = UserLocalServiceUtil.fetchUserById(entry.getUserId());
+
+	if (Validator.isNull(entryUser)) {
+	%>
 	<div class="user-portrait">
 		<span class="avatar">
+			<img alt="<%= HtmlUtil.escape(entry.getUserName()) %>" src="<%= UserConstants.getPortraitURL(themeDisplay.getPathImage(), true, 0, null) %>" />
+		</span>
+	</div>
 
-			<%
-			User entryUser = UserLocalServiceUtil.fetchUserById(entry.getUserId());
-			%>
+	<div class="entry-header">
+		<div class="entry-action">
+			<%= LanguageUtil.format(pageContext, "x-to-x", new Object[] {HtmlUtil.escape(entry.getUserName()), "<span class=\"scope\">" + scopeName + "</span>"}, false) %>
+		</div>
+
+		<div class="entry-time">
+			<%= Time.getRelativeTimeDescription(entry.getDisplayDate(), locale, timeZone) %>
+		</div>
+	</div>
+	<%
+	}
+	else {
+	%>
+	<div class="user-portrait">
+		<span class="avatar">
 
 			<a href="<%= entryUser.getDisplayURL(themeDisplay) %>">
 				<img alt="<%= HtmlUtil.escapeAttribute(entryUser.getFullName()) %>" src="<%= entryUser.getPortraitURL(themeDisplay) %>" />
@@ -68,7 +88,9 @@ if (entry.getPriority() > 0) {
 			<%= Time.getRelativeTimeDescription(entry.getDisplayDate(), locale, timeZone) %>
 		</div>
 	</div>
-
+	<%
+	}
+	%>
 	<div class="entry-block">
 		<div class="entry-body">
 			<div class="title">
