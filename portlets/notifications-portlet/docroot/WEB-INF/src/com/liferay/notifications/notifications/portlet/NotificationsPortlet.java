@@ -48,6 +48,7 @@ import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.util.ContentUtil;
 
+import java.text.DateFormat;
 import java.text.Format;
 
 import java.util.ArrayList;
@@ -576,11 +577,6 @@ public class NotificationsPortlet extends MVCPortlet {
 		String portletName = portlet.getDisplayName();
 		String portletIcon = portlet.getContextPath() + portlet.getIcon();
 
-		Format simpleDateFormat =
-			FastDateFormatFactoryUtil.getSimpleDateFormat(
-				"EEEE, MMMMM dd, yyyy 'at' h:mm a", themeDisplay.getLocale(),
-				themeDisplay.getTimeZone());
-
 		JSONObject userNotificationEventJSONObject =
 			JSONFactoryUtil.createJSONObject(
 				userNotificationEvent.getPayload());
@@ -598,6 +594,16 @@ public class NotificationsPortlet extends MVCPortlet {
 			userPortraitURL = user.getPortraitURL(themeDisplay);
 		}
 
+		Format dateFormat =
+			FastDateFormatFactoryUtil.getDate(
+				DateFormat.FULL, themeDisplay.getLocale(),
+				themeDisplay.getTimeZone());
+
+		Format dateTimeFormat =
+			FastDateFormatFactoryUtil.getDateTime(
+				DateFormat.FULL, DateFormat.SHORT, themeDisplay.getLocale(),
+				themeDisplay.getTimeZone());
+
 		return StringUtil.replace(
 			ContentUtil.get(PortletPropsValues.USER_NOTIFICATION_ENTRY),
 			new String[] {
@@ -608,9 +614,9 @@ public class NotificationsPortlet extends MVCPortlet {
 				actionDiv, userNotificationFeedEntry.getBody(), cssClass,
 				iconMenu, portletIcon, portletName,
 				Time.getRelativeTimeDescription(
-					userNotificationEvent.getTimestamp(),
+					userNotificationEvent.getTimestamp(), dateFormat,
 					themeDisplay.getLocale(), themeDisplay.getTimeZone()),
-				simpleDateFormat.format(userNotificationEvent.getTimestamp()),
+				dateTimeFormat.format(userNotificationEvent.getTimestamp()),
 				userFullName, userPortraitURL});
 	}
 
