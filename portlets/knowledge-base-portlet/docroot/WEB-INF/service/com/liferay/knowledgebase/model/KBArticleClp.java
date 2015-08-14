@@ -1201,6 +1201,44 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 	}
 
 	@Override
+	public java.lang.String getArticleResourceUuid() {
+		try {
+			String methodName = "getArticleResourceUuid";
+
+			Class<?>[] parameterTypes = new Class<?>[] {  };
+
+			Object[] parameterValues = new Object[] {  };
+
+			java.lang.String returnObj = (java.lang.String)invokeOnRemoteModel(methodName,
+					parameterTypes, parameterValues);
+
+			return returnObj;
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
+	public com.liferay.knowledgebase.model.KBArticleResource getArticleResource() {
+		try {
+			String methodName = "getArticleResource";
+
+			Class<?>[] parameterTypes = new Class<?>[] {  };
+
+			Object[] parameterValues = new Object[] {  };
+
+			com.liferay.knowledgebase.model.KBArticleResource returnObj = (com.liferay.knowledgebase.model.KBArticleResource)invokeOnRemoteModel(methodName,
+					parameterTypes, parameterValues);
+
+			return returnObj;
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
 	public StagedModelType getStagedModelType() {
 		return new StagedModelType(PortalUtil.getClassNameId(
 				KBArticle.class.getName()));

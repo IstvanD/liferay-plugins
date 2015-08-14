@@ -293,6 +293,18 @@ public class KBArticleWrapper implements KBArticle, ModelWrapper<KBArticle> {
 	}
 
 	@Override
+	public com.liferay.knowledgebase.model.KBArticleResource getArticleResource()
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _kbArticle.getArticleResource();
+	}
+
+	@Override
+	public java.lang.String getArticleResourceUuid()
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _kbArticle.getArticleResourceUuid();
+	}
+
+	@Override
 	public java.util.List<com.liferay.portal.kernel.repository.model.FileEntry> getAttachmentsFileEntries()
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _kbArticle.getAttachmentsFileEntries();
