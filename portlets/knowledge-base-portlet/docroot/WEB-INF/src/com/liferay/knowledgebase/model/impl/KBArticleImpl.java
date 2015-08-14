@@ -17,9 +17,11 @@ package com.liferay.knowledgebase.model.impl;
 import com.liferay.knowledgebase.article.util.KBArticleAttachmentsUtil;
 import com.liferay.knowledgebase.model.KBArticle;
 import com.liferay.knowledgebase.model.KBArticleConstants;
+import com.liferay.knowledgebase.model.KBArticleResource;
 import com.liferay.knowledgebase.model.KBFolder;
 import com.liferay.knowledgebase.model.KBFolderConstants;
 import com.liferay.knowledgebase.service.KBArticleLocalServiceUtil;
+import com.liferay.knowledgebase.service.KBArticleResourceLocalServiceUtil;
 import com.liferay.knowledgebase.service.KBArticleServiceUtil;
 import com.liferay.knowledgebase.service.KBFolderServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -63,6 +65,19 @@ public class KBArticleImpl extends KBArticleBaseImpl {
 		}
 
 		return ancestorResourcePrimaryKeys;
+	}
+
+	@Override
+	public KBArticleResource getArticleResource() throws PortalException {
+		return KBArticleResourceLocalServiceUtil.getArticleResource(
+			getResourcePrimKey());
+	}
+
+	@Override
+	public String getArticleResourceUuid() throws PortalException {
+		KBArticleResource articleResource = getArticleResource();
+
+		return articleResource.getUuid();
 	}
 
 	@Override
