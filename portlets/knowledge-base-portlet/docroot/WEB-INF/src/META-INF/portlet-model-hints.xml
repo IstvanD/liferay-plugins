@@ -42,6 +42,12 @@
 		<field name="statusByUserName" type="String" />
 		<field name="statusDate" type="Date" />
 	</model>
+	<model name="com.liferay.knowledgebase.model.KBArticleResource">
+		<field name="uuid" type="String" />
+		<field name="resourcePrimKey" type="long" />
+		<field name="groupId" type="long" />
+		<field name="kbArticleId" type="String" />
+	</model>
 	<model name="com.liferay.knowledgebase.model.KBComment">
 		<field name="uuid" type="String" />
 		<field name="kbCommentId" type="long" />

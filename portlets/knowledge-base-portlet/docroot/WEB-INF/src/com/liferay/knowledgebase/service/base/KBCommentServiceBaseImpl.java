@@ -18,6 +18,7 @@ import com.liferay.knowledgebase.model.KBComment;
 import com.liferay.knowledgebase.service.KBCommentService;
 import com.liferay.knowledgebase.service.persistence.KBArticleFinder;
 import com.liferay.knowledgebase.service.persistence.KBArticlePersistence;
+import com.liferay.knowledgebase.service.persistence.KBArticleResourcePersistence;
 import com.liferay.knowledgebase.service.persistence.KBCommentPersistence;
 import com.liferay.knowledgebase.service.persistence.KBFolderPersistence;
 import com.liferay.knowledgebase.service.persistence.KBTemplatePersistence;
@@ -133,6 +134,44 @@ public abstract class KBCommentServiceBaseImpl extends BaseServiceImpl
 	 */
 	public void setKBArticleFinder(KBArticleFinder kbArticleFinder) {
 		this.kbArticleFinder = kbArticleFinder;
+	}
+
+	/**
+	 * Returns the k b article resource local service.
+	 *
+	 * @return the k b article resource local service
+	 */
+	public com.liferay.knowledgebase.service.KBArticleResourceLocalService getKBArticleResourceLocalService() {
+		return kbArticleResourceLocalService;
+	}
+
+	/**
+	 * Sets the k b article resource local service.
+	 *
+	 * @param kbArticleResourceLocalService the k b article resource local service
+	 */
+	public void setKBArticleResourceLocalService(
+		com.liferay.knowledgebase.service.KBArticleResourceLocalService kbArticleResourceLocalService) {
+		this.kbArticleResourceLocalService = kbArticleResourceLocalService;
+	}
+
+	/**
+	 * Returns the k b article resource persistence.
+	 *
+	 * @return the k b article resource persistence
+	 */
+	public KBArticleResourcePersistence getKBArticleResourcePersistence() {
+		return kbArticleResourcePersistence;
+	}
+
+	/**
+	 * Sets the k b article resource persistence.
+	 *
+	 * @param kbArticleResourcePersistence the k b article resource persistence
+	 */
+	public void setKBArticleResourcePersistence(
+		KBArticleResourcePersistence kbArticleResourcePersistence) {
+		this.kbArticleResourcePersistence = kbArticleResourcePersistence;
 	}
 
 	/**
@@ -716,6 +755,10 @@ public abstract class KBCommentServiceBaseImpl extends BaseServiceImpl
 	protected KBArticlePersistence kbArticlePersistence;
 	@BeanReference(type = KBArticleFinder.class)
 	protected KBArticleFinder kbArticleFinder;
+	@BeanReference(type = com.liferay.knowledgebase.service.KBArticleResourceLocalService.class)
+	protected com.liferay.knowledgebase.service.KBArticleResourceLocalService kbArticleResourceLocalService;
+	@BeanReference(type = KBArticleResourcePersistence.class)
+	protected KBArticleResourcePersistence kbArticleResourcePersistence;
 	@BeanReference(type = com.liferay.knowledgebase.service.KBCommentLocalService.class)
 	protected com.liferay.knowledgebase.service.KBCommentLocalService kbCommentLocalService;
 	@BeanReference(type = com.liferay.knowledgebase.service.KBCommentService.class)

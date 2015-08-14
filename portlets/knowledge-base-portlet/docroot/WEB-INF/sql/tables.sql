@@ -30,6 +30,13 @@ create table KBArticle (
 	statusDate DATE null
 );
 
+create table KBArticleResource (
+	uuid_ VARCHAR(75) null,
+	resourcePrimKey LONG not null primary key,
+	groupId LONG,
+	kbArticleId VARCHAR(75) null
+);
+
 create table KBComment (
 	uuid_ VARCHAR(75) null,
 	kbCommentId LONG not null primary key,

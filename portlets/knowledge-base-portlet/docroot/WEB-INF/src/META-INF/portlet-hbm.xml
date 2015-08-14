@@ -3,6 +3,7 @@
 
 <hibernate-mapping default-lazy="false" auto-import="false">
 	<import class="com.liferay.knowledgebase.model.KBArticle" />
+	<import class="com.liferay.knowledgebase.model.KBArticleResource" />
 	<import class="com.liferay.knowledgebase.model.KBComment" />
 	<import class="com.liferay.knowledgebase.model.KBFolder" />
 	<import class="com.liferay.knowledgebase.model.KBTemplate" />
@@ -38,6 +39,14 @@
 		<property name="statusByUserId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="statusByUserName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="statusDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.liferay.knowledgebase.model.impl.KBArticleResourceImpl" table="KBArticleResource">
+		<id name="resourcePrimKey" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="uuid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="uuid_" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="kbArticleId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
 	<class name="com.liferay.knowledgebase.model.impl.KBCommentImpl" table="KBComment">
 		<id name="kbCommentId" type="long">

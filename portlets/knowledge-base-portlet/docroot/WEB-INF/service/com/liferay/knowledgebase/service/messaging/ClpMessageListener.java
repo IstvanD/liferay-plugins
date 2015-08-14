@@ -18,6 +18,7 @@ import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.knowledgebase.service.ClpSerializer;
 import com.liferay.knowledgebase.service.KBArticleLocalServiceUtil;
+import com.liferay.knowledgebase.service.KBArticleResourceLocalServiceUtil;
 import com.liferay.knowledgebase.service.KBArticleServiceUtil;
 import com.liferay.knowledgebase.service.KBCommentLocalServiceUtil;
 import com.liferay.knowledgebase.service.KBCommentServiceUtil;
@@ -48,6 +49,8 @@ public class ClpMessageListener extends BaseMessageListener {
 			KBArticleLocalServiceUtil.clearService();
 
 			KBArticleServiceUtil.clearService();
+			KBArticleResourceLocalServiceUtil.clearService();
+
 			KBCommentLocalServiceUtil.clearService();
 
 			KBCommentServiceUtil.clearService();
