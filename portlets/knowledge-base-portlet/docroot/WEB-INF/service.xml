@@ -179,6 +179,7 @@
 
 		<!-- References -->
 
+		<reference package-path="com.liferay.knowledgebase" entity="KBArticleResource" />
 		<reference package-path="com.liferay.portal" entity="ClassName" />
 		<reference package-path="com.liferay.portal" entity="Company" />
 		<reference package-path="com.liferay.portal" entity="Group" />
@@ -191,6 +192,30 @@
 		<reference package-path="com.liferay.portlet.asset" entity="AssetLink" />
 		<reference package-path="com.liferay.portlet.ratings" entity="RatingsStats" />
 		<reference package-path="com.liferay.portlet.social" entity="SocialActivity" />
+	</entity>
+	<entity name="KBArticleResource" uuid="true" local-service="true" remote-service="false">
+
+		<!-- PK fields -->
+
+		<column name="resourcePrimKey" type="long" primary="true" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Other fields -->
+
+		<column name="kbArticleId" type="String" />
+
+		<!-- Finder methods -->
+
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+		<finder name="G_KBAI" return-type="KBArticleResource" unique="true">
+			<finder-column name="groupId" />
+			<finder-column name="kbArticleId" />
+		</finder>
 	</entity>
 	<entity name="KBComment" uuid="true" local-service="true" remote-service="true">
 
