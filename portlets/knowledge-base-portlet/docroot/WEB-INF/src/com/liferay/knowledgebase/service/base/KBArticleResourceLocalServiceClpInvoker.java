@@ -134,6 +134,36 @@ public class KBArticleResourceLocalServiceClpInvoker {
 		_methodName70 = "setBeanIdentifier";
 
 		_methodParameterTypes70 = new String[] { "java.lang.String" };
+
+		_methodName75 = "deleteArticleResource";
+
+		_methodParameterTypes75 = new String[] { "long", "java.lang.String" };
+
+		_methodName76 = "fetchArticleResource";
+
+		_methodParameterTypes76 = new String[] { "long", "java.lang.String" };
+
+		_methodName77 = "fetchArticleResource";
+
+		_methodParameterTypes77 = new String[] { "java.lang.String", "long" };
+
+		_methodName78 = "getArticleResource";
+
+		_methodParameterTypes78 = new String[] { "long" };
+
+		_methodName79 = "getArticleResourcePrimKey";
+
+		_methodParameterTypes79 = new String[] { "long", "java.lang.String" };
+
+		_methodName80 = "getArticleResourcePrimKey";
+
+		_methodParameterTypes80 = new String[] {
+				"java.lang.String", "long", "java.lang.String"
+			};
+
+		_methodName81 = "getArticleResources";
+
+		_methodParameterTypes81 = new String[] { "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -259,6 +289,48 @@ public class KBArticleResourceLocalServiceClpInvoker {
 			return null;
 		}
 
+		if (_methodName75.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes75, parameterTypes)) {
+			KBArticleResourceLocalServiceUtil.deleteArticleResource(((Long)arguments[0]).longValue(),
+				(java.lang.String)arguments[1]);
+
+			return null;
+		}
+
+		if (_methodName76.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
+			return KBArticleResourceLocalServiceUtil.fetchArticleResource(((Long)arguments[0]).longValue(),
+				(java.lang.String)arguments[1]);
+		}
+
+		if (_methodName77.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
+			return KBArticleResourceLocalServiceUtil.fetchArticleResource((java.lang.String)arguments[0],
+				((Long)arguments[1]).longValue());
+		}
+
+		if (_methodName78.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes78, parameterTypes)) {
+			return KBArticleResourceLocalServiceUtil.getArticleResource(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName79.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes79, parameterTypes)) {
+			return KBArticleResourceLocalServiceUtil.getArticleResourcePrimKey(((Long)arguments[0]).longValue(),
+				(java.lang.String)arguments[1]);
+		}
+
+		if (_methodName80.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes80, parameterTypes)) {
+			return KBArticleResourceLocalServiceUtil.getArticleResourcePrimKey((java.lang.String)arguments[0],
+				((Long)arguments[1]).longValue(), (java.lang.String)arguments[2]);
+		}
+
+		if (_methodName81.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes81, parameterTypes)) {
+			return KBArticleResourceLocalServiceUtil.getArticleResources(((Long)arguments[0]).longValue());
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -306,4 +378,18 @@ public class KBArticleResourceLocalServiceClpInvoker {
 	private String[] _methodParameterTypes69;
 	private String _methodName70;
 	private String[] _methodParameterTypes70;
+	private String _methodName75;
+	private String[] _methodParameterTypes75;
+	private String _methodName76;
+	private String[] _methodParameterTypes76;
+	private String _methodName77;
+	private String[] _methodParameterTypes77;
+	private String _methodName78;
+	private String[] _methodParameterTypes78;
+	private String _methodName79;
+	private String[] _methodParameterTypes79;
+	private String _methodName80;
+	private String[] _methodParameterTypes80;
+	private String _methodName81;
+	private String[] _methodParameterTypes81;
 }

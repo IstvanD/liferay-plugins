@@ -68,6 +68,9 @@ public interface KBArticleResourceLocalService extends BaseLocalService,
 	public com.liferay.knowledgebase.model.KBArticleResource createKBArticleResource(
 		long resourcePrimKey);
 
+	public void deleteArticleResource(long groupId, java.lang.String kbArticleId)
+		throws PortalException;
+
 	/**
 	* Deletes the k b article resource from the database. Also notifies the appropriate model listeners.
 	*
@@ -163,6 +166,14 @@ public interface KBArticleResourceLocalService extends BaseLocalService,
 		com.liferay.portal.kernel.dao.orm.Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public com.liferay.knowledgebase.model.KBArticleResource fetchArticleResource(
+		long groupId, java.lang.String kbArticleId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public com.liferay.knowledgebase.model.KBArticleResource fetchArticleResource(
+		java.lang.String uuid, long groupId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public com.liferay.knowledgebase.model.KBArticleResource fetchKBArticleResource(
 		long resourcePrimKey);
 
@@ -179,6 +190,22 @@ public interface KBArticleResourceLocalService extends BaseLocalService,
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery getActionableDynamicQuery();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public com.liferay.knowledgebase.model.KBArticleResource getArticleResource(
+		long articleResourcePrimKey) throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public long getArticleResourcePrimKey(long groupId,
+		java.lang.String kbArticleId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public long getArticleResourcePrimKey(java.lang.String uuid, long groupId,
+		java.lang.String kbArticleId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<com.liferay.knowledgebase.model.KBArticleResource> getArticleResources(
+		long groupId);
 
 	/**
 	* Returns the Spring bean ID for this bean.

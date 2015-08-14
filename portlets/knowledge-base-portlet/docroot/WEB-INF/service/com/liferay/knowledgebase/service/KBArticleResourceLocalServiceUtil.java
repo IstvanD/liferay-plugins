@@ -64,6 +64,12 @@ public class KBArticleResourceLocalServiceUtil {
 		return getService().createKBArticleResource(resourcePrimKey);
 	}
 
+	public static void deleteArticleResource(long groupId,
+		java.lang.String kbArticleId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		getService().deleteArticleResource(groupId, kbArticleId);
+	}
+
 	/**
 	* Deletes the k b article resource from the database. Also notifies the appropriate model listeners.
 	*
@@ -175,6 +181,16 @@ public class KBArticleResourceLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
+	public static com.liferay.knowledgebase.model.KBArticleResource fetchArticleResource(
+		long groupId, java.lang.String kbArticleId) {
+		return getService().fetchArticleResource(groupId, kbArticleId);
+	}
+
+	public static com.liferay.knowledgebase.model.KBArticleResource fetchArticleResource(
+		java.lang.String uuid, long groupId) {
+		return getService().fetchArticleResource(uuid, groupId);
+	}
+
 	public static com.liferay.knowledgebase.model.KBArticleResource fetchKBArticleResource(
 		long resourcePrimKey) {
 		return getService().fetchKBArticleResource(resourcePrimKey);
@@ -194,6 +210,27 @@ public class KBArticleResourceLocalServiceUtil {
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery getActionableDynamicQuery() {
 		return getService().getActionableDynamicQuery();
+	}
+
+	public static com.liferay.knowledgebase.model.KBArticleResource getArticleResource(
+		long articleResourcePrimKey)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().getArticleResource(articleResourcePrimKey);
+	}
+
+	public static long getArticleResourcePrimKey(long groupId,
+		java.lang.String kbArticleId) {
+		return getService().getArticleResourcePrimKey(groupId, kbArticleId);
+	}
+
+	public static long getArticleResourcePrimKey(java.lang.String uuid,
+		long groupId, java.lang.String kbArticleId) {
+		return getService().getArticleResourcePrimKey(uuid, groupId, kbArticleId);
+	}
+
+	public static java.util.List<com.liferay.knowledgebase.model.KBArticleResource> getArticleResources(
+		long groupId) {
+		return getService().getArticleResources(groupId);
 	}
 
 	/**

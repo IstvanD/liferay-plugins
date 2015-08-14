@@ -58,6 +58,13 @@ public class KBArticleResourceLocalServiceWrapper
 		return _kbArticleResourceLocalService.createKBArticleResource(resourcePrimKey);
 	}
 
+	@Override
+	public void deleteArticleResource(long groupId, java.lang.String kbArticleId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		_kbArticleResourceLocalService.deleteArticleResource(groupId,
+			kbArticleId);
+	}
+
 	/**
 	* Deletes the k b article resource from the database. Also notifies the appropriate model listeners.
 	*
@@ -181,6 +188,19 @@ public class KBArticleResourceLocalServiceWrapper
 	}
 
 	@Override
+	public com.liferay.knowledgebase.model.KBArticleResource fetchArticleResource(
+		long groupId, java.lang.String kbArticleId) {
+		return _kbArticleResourceLocalService.fetchArticleResource(groupId,
+			kbArticleId);
+	}
+
+	@Override
+	public com.liferay.knowledgebase.model.KBArticleResource fetchArticleResource(
+		java.lang.String uuid, long groupId) {
+		return _kbArticleResourceLocalService.fetchArticleResource(uuid, groupId);
+	}
+
+	@Override
 	public com.liferay.knowledgebase.model.KBArticleResource fetchKBArticleResource(
 		long resourcePrimKey) {
 		return _kbArticleResourceLocalService.fetchKBArticleResource(resourcePrimKey);
@@ -203,6 +223,33 @@ public class KBArticleResourceLocalServiceWrapper
 	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery getActionableDynamicQuery() {
 		return _kbArticleResourceLocalService.getActionableDynamicQuery();
+	}
+
+	@Override
+	public com.liferay.knowledgebase.model.KBArticleResource getArticleResource(
+		long articleResourcePrimKey)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _kbArticleResourceLocalService.getArticleResource(articleResourcePrimKey);
+	}
+
+	@Override
+	public long getArticleResourcePrimKey(long groupId,
+		java.lang.String kbArticleId) {
+		return _kbArticleResourceLocalService.getArticleResourcePrimKey(groupId,
+			kbArticleId);
+	}
+
+	@Override
+	public long getArticleResourcePrimKey(java.lang.String uuid, long groupId,
+		java.lang.String kbArticleId) {
+		return _kbArticleResourceLocalService.getArticleResourcePrimKey(uuid,
+			groupId, kbArticleId);
+	}
+
+	@Override
+	public java.util.List<com.liferay.knowledgebase.model.KBArticleResource> getArticleResources(
+		long groupId) {
+		return _kbArticleResourceLocalService.getArticleResources(groupId);
 	}
 
 	/**
