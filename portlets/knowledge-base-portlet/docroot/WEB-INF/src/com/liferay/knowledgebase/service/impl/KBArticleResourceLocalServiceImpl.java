@@ -14,30 +14,91 @@
 
 package com.liferay.knowledgebase.service.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
+import com.liferay.knowledgebase.model.KBArticleResource;
 import com.liferay.knowledgebase.service.base.KBArticleResourceLocalServiceBaseImpl;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.util.Validator;
+
+import java.util.List;
 
 /**
- * The implementation of the k b article resource local service.
- *
- * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link com.liferay.knowledgebase.service.KBArticleResourceLocalService} interface.
- *
- * <p>
- * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
- * </p>
- *
  * @author Brian Wing Shun Chan
- * @see KBArticleResourceLocalServiceBaseImpl
- * @see com.liferay.knowledgebase.service.KBArticleResourceLocalServiceUtil
  */
-@ProviderType
 public class KBArticleResourceLocalServiceImpl
 	extends KBArticleResourceLocalServiceBaseImpl {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this class directly. Always use {@link com.liferay.knowledgebase.service.KBArticleResourceLocalServiceUtil} to access the k b article resource local service.
-	 */
+
+	@Override
+	public void deleteArticleResource(long groupId, String kbArticleId)
+		throws PortalException {
+
+		KBArticleResourcePersistence.removeByG_KBAI(groupId, kbArticleId);
+	}
+
+	@Override
+	public KBArticleResource fetchArticleResource(
+		long groupId, String kbArticleId) {
+
+		return KBArticleResourcePersistence.fetchByG_KBAI(groupId, kbArticleId);
+	}
+
+	@Override
+	public KBArticleResource fetchArticleResource(
+		String uuid, long groupId) {
+
+		return KBArticleResourcePersistence.fetchByUUID_G(uuid, groupId);
+	}
+
+	@Override
+	public KBArticleResource getArticleResource(
+			long articleResourcePrimKey)
+		throws PortalException {
+
+		return KBArticleResourcePersistence.findByPrimaryKey(
+			articleResourcePrimKey);
+	}
+
+	@Override
+	public long getArticleResourcePrimKey(long groupId, String kbArticleId) {
+		return getArticleResourcePrimKey(null, groupId, kbArticleId);
+	}
+
+	@Override
+	public long getArticleResourcePrimKey(
+		String uuid, long groupId, String kbArticleId) {
+
+		KBArticleResource articleResource = null;
+
+		if (Validator.isNotNull(uuid)) {
+			articleResource = KBArticleResourcePersistence.fetchByUUID_G(
+				uuid, groupId);
+		}
+
+		if (articleResource == null) {
+			articleResource = KBArticleResourcePersistence.fetchByG_KBAI(
+				groupId, kbArticleId);
+		}
+
+		if (articleResource == null) {
+			long articleResourcePrimKey = counterLocalService.increment();
+
+			articleResource = KBArticleResourcePersistence.create(
+				articleResourcePrimKey);
+
+			if (Validator.isNotNull(uuid)) {
+				articleResource.setUuid(uuid);
+			}
+
+			articleResource.setGroupId(groupId);
+			articleResource.setKbArticleId(kbArticleId);
+
+			KBArticleResourcePersistence.update(articleResource);
+		}
+
+		return articleResource.getResourcePrimKey();
+	}
+
+	@Override
+	public List<KBArticleResource> getArticleResources(long groupId) {
+		return KBArticleResourcePersistence.findByGroupId(groupId);
+	}
 }
